@@ -4,7 +4,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import './global.css';
 import App from './components/App';
+import {Provider} from "react-redux";
+import {createStore, applyMiddleware} from "redux";
+import reducers from "./reducers";
+import reduxThunk from "redux-thunk";
 
 const container = document.getElementById('app');
 
-ReactDOM.render(<App />, container);
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    container);

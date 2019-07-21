@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './styles/Home.css';
-import platziconfLogoImage from '../images/platziconf-logo.svg';
-import astronautsImage from '../images/astronauts.svg';
+import youtubepPlayerLogoImage from '../images/youtube.svg';
+import astronautsImage from '../images/astronaut.svg';
 
 export default class Home extends Component {
   render() {
@@ -13,14 +13,14 @@ export default class Home extends Component {
           <div className="row">
             <div className="Home__col col-12 col-md-4">
               <img
-                src={platziconfLogoImage}
+                src={youtubepPlayerLogoImage}
                 alt="Platzi Conf Logo"
                 className="img-fluid mb-2"
               />
 
-              <h1>Badge Management System</h1>
-              <Link className="btn btn-primary" to="/badges">
-                Start
+              <h1>Youtube Player System</h1>
+              <Link className="btn btn-primary" to="/login">
+                Login
               </Link>
             </div>
 
