@@ -1,4 +1,4 @@
-import { FETCH_TODOS } from "../actions/types";
+import { FETCH_TODOS } from "../components/actions/types";
 
 export default (state = "loading", action) => {
   switch (action.type) {

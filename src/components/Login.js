@@ -1,17 +1,21 @@
 import "./styles/SignIn.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { signIn } from "../actions";
+import { signIn } from "./actions";
 import PropTypes from "prop-types";
+import { withFirebase, isLoaded, isEmpty } from 'react-redux-firebase'
 
-class Signin extends Component {
+class Login extends Component {
+
   static contextTypes = {
     router: PropTypes.object
   };
 
   componentWillUpdate(nextProps) {
     if (nextProps.auth) {
-      this.context.router.history.push("/app");
+      console.log("It will open /youtube");
+      this.context.router.history.push("/youtube");
+      console.log("IS inside youtube");
     }
   }
 
@@ -33,4 +37,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, { signIn })(Signin);
+export default connect(mapStateToProps, { signIn })(Login);

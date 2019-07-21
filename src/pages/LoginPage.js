@@ -1,21 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import './styles/Badges.css';
 import confLogo from '../images/badge-header.svg';
-import BadgesList from '../components/BadgesList';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
-import MiniLoader from '../components/MiniLoader';
-import api from '../api';
-import Signin from "../components/SignIn";
+import api from '../modules/apis/api';
+import Login from "../components/Login";
 
-class Login extends React.Component {
+class LoginPage extends React.Component {
   state = {
     loading: true,
     error: null,
     data: undefined,
   };
+
+  //this.authListener = this.authListener.bind(this);
 
   componentDidMount() {
     this.fetchData();
@@ -60,7 +58,7 @@ class Login extends React.Component {
             </div>
           </div>
           <div className="Badges__container">
-            <Signin />
+            <Login />
           </div>
         </div>
       </React.Fragment>
@@ -68,4 +66,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default LoginPage;

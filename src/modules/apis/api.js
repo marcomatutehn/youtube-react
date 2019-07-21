@@ -49,6 +49,7 @@ const api = {
       });
     },
   },
+  Login: {}
 };
 
 export default api;

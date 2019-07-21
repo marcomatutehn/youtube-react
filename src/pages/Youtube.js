@@ -1,19 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import './styles/Badges.css';
 import confLogo from '../images/badge-header.svg';
-import BadgesList from '../components/BadgesList';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
-import MiniLoader from '../components/MiniLoader';
-import api from '../api';
+import api from '../modules/apis/api';
+import SearchBar from '../components/SearchBar';
+import VideoDetail from '../components/VideoDetail';
+import youtube from '../modules/apis/youtube';
+import VideoList from '../components/VideoList';
 
-class Badges extends React.Component {
+class Youtube extends React.Component {
   state = {
     loading: true,
     error: null,
     data: undefined,
+    videos: [],
+    selectedVideo: null
   };
 
   componentDidMount() {
@@ -24,6 +26,20 @@ class Badges extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.intervalId);
+  }
+
+  handleSubmit = async (termFromSearchBar) => {
+    const response = await youtube.get('/search', {
+      params: {
+        q: termFromSearchBar
+      }
+    })
+    this.setState({
+      videos: response.data.items
+    })
+  };
+  handleVideoSelect = (video) => {
+    this.setState({selectedVideo: video})
   }
 
   fetchData = async () => {
@@ -61,19 +77,23 @@ class Badges extends React.Component {
         </div>
 
         <div className="Badges__container">
-          <div className="Badges__buttons">
-            <Link to="/badges/new" className="btn btn-primary">
-              New Badge
-            </Link>
+          <div className='ui container' style={{marginTop: '1em'}}>
+            <SearchBar handleFormSubmit={this.handleSubmit}/>
+            <div className='ui grid'>
+              <div className="ui row">
+                <div className="eleven wide column">
+                  <VideoDetail video={this.state.selectedVideo}/>
+                </div>
+                <div className="five wide column">
+                  <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <BadgesList badges={this.state.data} />
-
-          {this.state.loading && <MiniLoader />}
         </div>
       </React.Fragment>
     );
   }
 }
 
-export default Badges;
+export default Youtube;

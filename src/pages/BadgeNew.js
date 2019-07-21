@@ -5,7 +5,7 @@ import header from '../images/platziconf-logo.svg';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 import PageLoading from '../components/PageLoading';
-import api from '../api';
+import api from '../modules/apis/api';
 
 class BadgeNew extends React.Component {
   state = {
@@ -44,6 +44,7 @@ class BadgeNew extends React.Component {
   };
 
   render() {
+    //It shows Loading Animation meanwhile it is loading
     if (this.state.loading) {
       return <PageLoading />;
     }

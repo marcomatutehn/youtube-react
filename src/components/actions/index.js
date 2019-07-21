@@ -1,5 +1,6 @@
 import { todosRef, authRef, provider } from "../config/firebase";
 import { FETCH_TODOS, FETCH_USER } from "./types";
+import PropTypes from "prop-types";
 
 export const addToDo = (newToDo, uid) => async dispatch => {
   todosRef
@@ -43,7 +44,10 @@ export const fetchUser = () => dispatch => {
 export const signIn = () => dispatch => {
   authRef
     .signInWithPopup(provider)
-    .then(result => {})
+
+    .then(result => {
+      console.log("Ingreso a Google Account");
+    })
     .catch(error => {
       console.log(error);
       console.log("No se logro autenticar");
