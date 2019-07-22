@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles/Badge.css';
-import confLogo from '../images/badge-header.svg';
 
 const VideoDetail = ({video}) => {
     if (!video) {
-        return <div>Loading ...</div>;
+        return <div>Loading .....</div>;
     }
 
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;

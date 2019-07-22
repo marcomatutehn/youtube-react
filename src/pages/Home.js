@@ -17,8 +17,7 @@ export default class Home extends Component {
                 alt="Platzi Conf Logo"
                 className="img-fluid mb-2"
               />
-
-              <h1>Youtube Player System</h1>
+              <h1>Youtube Player <br/>System</h1>
               <Link className="btn btn-primary" to="/login">
                 Login
               </Link>

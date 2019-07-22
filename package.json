@@ -8,27 +8,40 @@
     "server": "json-server --port 3001 --watch server/db.json",
     "seed": "node server/seed.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test mocha test/.setup.js test/**/*-test.js",
+    "eject": "react-scripts eject",
+    "dev:hot": "webpack-dev-server --hot --inline --progress --colors --watch --display-error-details --display-cached --content-base ./"
   },
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "4.3.1",
+    "chai": "^4.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "firebase": "^6.3.1",
     "md5": "^2.2.1",
     "prop-types": "latest",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-live-clock": "^3.1.0",
     "react-redux": "^7.1.0",
     "react-redux-firebase": "^2.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sinon": "^7.3.2"
   },
   "devDependencies": {
+    "babel": "^6.3.26",
+    "babel-preset-airbnb": "^1.0.1",
+    "babel-register": "^6.4.3",
+    "react-addons-test-utils": "^0.14.7",
+    "chai": "^3.5.0",
+    "enzyme": "^2.0.0",
     "faker": "^4.1.0",
     "json-server": "^0.14.2",
+    "mocha": "^6.2.0",
     "npm-run-all": "^4.1.5",
     "webpack-cli": "^3.3.6"
   },

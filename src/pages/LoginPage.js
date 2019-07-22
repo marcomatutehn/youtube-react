@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles/Badges.css';
-import confLogo from '../images/badge-header.svg';
+import confLogo from '../images/astronauts.svg';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
-import api from '../modules/apis/api';
+import api from '../apis/api';
 import Login from "../components/Login";
 
 class LoginPage extends React.Component {
@@ -50,16 +50,13 @@ class LoginPage extends React.Component {
         <div className="Badges">
           <div className="Badges__hero">
             <div className="Badges__container">
-              <img
-                className="Badges_conf-logo"
-                src={confLogo}
-                alt="Conf Logo"
-              />
+              <div className="Badges__container">
+                <Login />
+              </div>
+
             </div>
           </div>
-          <div className="Badges__container">
-            <Login />
-          </div>
+
         </div>
       </React.Fragment>
     );

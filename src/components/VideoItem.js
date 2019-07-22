@@ -1,7 +1,6 @@
 import React from 'react';
-
+import './styles/video.css';
 import './styles/Badge.css';
-import confLogo from '../images/badge-header.svg';
 
 const VideoItem = ({video , handleVideoSelect}) => {
     return (

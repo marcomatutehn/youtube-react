@@ -1,21 +1,20 @@
 import React, { Component }  from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Layout from './Layout';
-import Home from '../pages/Home';
-import LoginPage from '../pages/LoginPage';
 import SignIn from './Login';
-import Youtube from '../pages/Youtube';
-import Badges from '../pages/Badges';
-import BadgeNew from '../pages/BadgeNew';
-import BadgeDetails from '../pages/BadgeDetailsContainer';
-import BadgeEdit from '../pages/BadgeEdit';
+import Layout from './Layout';
 import VideoItem from "./VideoItem";
 import VideoDetail from "./VideoDetail";
 import VideoList from "./VideoList";
-import SearchBar from "./SearchBar";
 import requireAuth from "./auth/requireAuth";
 import NotFound from '../pages/NotFound';
 import { fetchUser } from "./actions";
+import Home from '../pages/Home';
+import LoginPage from '../pages/LoginPage';
+import Youtube from '../pages/Youtube';
+import SearchBar from "./SearchBar";
+
+//import youtube from '../apis/youtube';
+
 import { connect } from "react-redux";
 
 class App extends Component {
@@ -23,27 +22,22 @@ class App extends Component {
     this.props.fetchUser();
   }
 
+  //How to implement Security
+  //<Route  path="/badges/new" component={requireAuth(BadgeNew)}/>
+
   render() {
     return (
         <BrowserRouter>
           <Layout>
             <Switch>
               <Route exact path="/" component={Home}/>
-
               <Route exact path="/login" component={LoginPage}/>
               <Route exact path="/signin" component={SignIn}/>
-
-              <Route  path="/badges" component={requireAuth(Badges)}/>
-
               <Route  path="/youtube" component={Youtube}/>
-              <Route  path="/player" component={VideoItem}/>
-              <Route  path="/result" component={VideoDetail}/>
-              <Route  path="/table" component={VideoList}/>
+              <Route  path="/item" component={VideoItem}/>
+              <Route  path="/detail" component={VideoDetail}/>
+              <Route  path="/list" component={VideoList}/>
               <Route  path="/search" component={SearchBar}/>
-
-              <Route  path="/badges/new" component={requireAuth(BadgeNew)}/>
-              <Route  path="/badges/:badgeId" component={requireAuth(BadgeDetails)}/>
-              <Route  path="/badges/:badgeId/edit" component={requireAuth(BadgeEdit)}/>
               <Route component={NotFound}/>
             </Switch>
           </Layout>

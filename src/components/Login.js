@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn } from "./actions";
 import PropTypes from "prop-types";
-import { withFirebase, isLoaded, isEmpty } from 'react-redux-firebase'
+import googleLogoImage from "../images/google.svg";
+//import { withFirebase, isLoaded, isEmpty } from 'react-redux-firebase'
 
 class Login extends Component {
 
@@ -23,6 +24,11 @@ class Login extends Component {
     return (
       <div className="row social-signin-container">
         <div className="justify-content-center offset-s1 center-align">
+          <img
+              src={googleLogoImage}
+              alt="Google Conf Logo"
+              className="ui centered img-fluid mb-2 justify-content-center google"
+          />
           <a href="#" className="social-signin" onClick={this.props.signIn}>
             <i className="fa fa-google social-signin-icon" />
             Sign In With Google

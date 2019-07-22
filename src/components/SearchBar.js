@@ -3,16 +3,15 @@ import './styles/Badge.css';
 
 class SearchBar extends React.Component {
     state = {
-        term: 'Default text'
+        term: 'Type someting'
     };
 
     handleChange = (event) => {
         this.setState({
             term: event.target.value
-            });
+        });
     };
-
-    handleSubmit = (event) => {
+    handleSubmit = event => {
         event.preventDefault();
         this.props.handleFormSubmit(this.state.term);
     };
@@ -23,6 +22,7 @@ class SearchBar extends React.Component {
                 <form onSubmit={this.handleSubmit} className='ui form'>
                     <div className='field'>
                         <label htmlFor="video-search">Video Search</label>
+                        <br className="justify-content-center"/>
                         <input onChange={this.handleChange} name='video-search' type="text" value={this.state.term}/>
                     </div>
                 </form>

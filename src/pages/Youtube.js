@@ -1,34 +1,22 @@
 import React from 'react';
+import youtube from '../apis/youtube';
 import './styles/Badges.css';
-import confLogo from '../images/badge-header.svg';
+
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
-import api from '../modules/apis/api';
 import SearchBar from '../components/SearchBar';
 import VideoDetail from '../components/VideoDetail';
-import youtube from '../modules/apis/youtube';
 import VideoList from '../components/VideoList';
+import Clock from 'react-live-clock';
+
 
 class Youtube extends React.Component {
   state = {
-    loading: true,
-    error: null,
-    data: undefined,
-    videos: [],
-    selectedVideo: null
-  };
-
-  componentDidMount() {
-    this.fetchData();
-
-    this.intervalId = setInterval(this.fetchData, 5000);
+    "videos": [],
+    "selectedVideo": null
   }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalId);
-  }
-
   handleSubmit = async (termFromSearchBar) => {
+    console.log("Is inside handleSubmit")
     const response = await youtube.get('/search', {
       params: {
         q: termFromSearchBar
@@ -42,6 +30,23 @@ class Youtube extends React.Component {
     this.setState({selectedVideo: video})
   }
 
+  componentDidUpdate() {
+
+  }
+
+  /*
+  componentDidMount() {
+   //this.fetchData();
+
+    //this.intervalId = setInterval(this.fetchData, 5000);
+  }
+
+  componentWillUnmount() {
+    //clearInterval(this.intervalId);
+  }
+
+
+
   fetchData = async () => {
     this.setState({ loading: true, error: null });
 
@@ -52,6 +57,7 @@ class Youtube extends React.Component {
       this.setState({ loading: false, error: error });
     }
   };
+  */
 
   render() {
     if (this.state.loading === true && !this.state.data) {
@@ -67,32 +73,32 @@ class Youtube extends React.Component {
         <div className="Badges">
           <div className="Badges__hero">
             <div className="Badges__container">
-              <img
-                className="Badges_conf-logo"
-                src={confLogo}
-                alt="Conf Logo"
-              />
+
             </div>
           </div>
         </div>
 
-        <div className="Badges__container">
-          <div className='ui container' style={{marginTop: '1em'}}>
-            <SearchBar handleFormSubmit={this.handleSubmit}/>
-            <div className='ui grid'>
-              <div className="ui row">
-                <div className="eleven wide column">
-                  <VideoDetail video={this.state.selectedVideo}/>
-                </div>
-                <div className="five wide column">
-                  <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
-                </div>
+        <div className='ui container' style={{marginTop: '1em'}}>
+          <Clock
+              format="dddd, MMMM Mo, YYYY, HH:mm:ss"
+              ticking={true}
+              interval={1000}
+          />
+          <SearchBar handleFormSubmit={this.handleSubmit}/>
+          <div className='ui grid'>
+            <div className="ui row">
+              <div className="eleven wide column">
+                <VideoDetail video={this.state.selectedVideo}/>
+              </div>
+              <div className="five wide column">
+                <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
               </div>
             </div>
           </div>
         </div>
+
       </React.Fragment>
-    );
+    )
   }
 }
 
