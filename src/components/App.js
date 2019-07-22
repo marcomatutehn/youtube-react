@@ -33,7 +33,7 @@ class App extends Component {
               <Route exact path="/" component={Home}/>
               <Route exact path="/login" component={LoginPage}/>
               <Route exact path="/signin" component={SignIn}/>
-              <Route  path="/youtube" component={Youtube}/>
+              <Route  path="/youtube" component={requireAuth(Youtube)}/>
               <Route  path="/item" component={VideoItem}/>
               <Route  path="/detail" component={VideoDetail}/>
               <Route  path="/list" component={VideoList}/>

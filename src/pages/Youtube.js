@@ -31,7 +31,8 @@ class Youtube extends React.Component {
   }
 
   componentDidUpdate() {
-
+  this.props.handleVideoSelect();
+  this.props.handleSubmit();
   }
 
   /*

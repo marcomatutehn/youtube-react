@@ -3,10 +3,11 @@ import './styles/Badges.css';
 import confLogo from '../images/astronauts.svg';
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
-import api from '../apis/api';
+//import api from '../apis/api';
 import Login from "../components/Login";
 
 class LoginPage extends React.Component {
+/*
   state = {
     loading: true,
     error: null,
@@ -35,8 +36,9 @@ class LoginPage extends React.Component {
       this.setState({ loading: false, error: error });
     }
   };
-
+*/
   render() {
+    /*
     if (this.state.loading === true && !this.state.data) {
       return <PageLoading />;
     }
@@ -44,7 +46,7 @@ class LoginPage extends React.Component {
     if (this.state.error) {
       return <PageError error={this.state.error} />;
     }
-
+*/
     return (
       <React.Fragment>
         <div className="Badges">
