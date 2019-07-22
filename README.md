@@ -1,4 +1,5 @@
 # Youtube Player with React.js
+# Note: You can check the Youtube Page route at: /youtube 
 # List of requirements that are not finish yet: 
   - Functionality to select a result & subsequently load an iframe ( Partial, conflic problem with Redux and Axios ). 
   - Functionality to save a result for watching later.
