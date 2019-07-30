@@ -1,5 +1,5 @@
 import React from 'react';
-import youtube from '../apis/youtube';
+import youtube from '../components/apis/youtube';
 import './styles/Badges.css';
 
 import PageLoading from '../components/PageLoading';
@@ -8,6 +8,10 @@ import SearchBar from '../components/SearchBar';
 import VideoDetail from '../components/VideoDetail';
 import VideoList from '../components/VideoList';
 import Clock from 'react-live-clock';
+
+// Conect component to Redux
+import { connect } from 'react-redux';
+import * as videosActions from '../components/actions/videosActions';
 
 
 class Youtube extends React.Component {
@@ -29,6 +33,13 @@ class Youtube extends React.Component {
   handleVideoSelect = (video) => {
     this.setState({selectedVideo: video})
   }
+
+  //componentDidMount() {
+    //REVISAR POR QUE NO ES VISIBLE TRAER VIDEOS DE VIDEOACTIONS.JS, DEBERIA SER VISIBLE
+    //PARA QUE EL REDUX FUNCIONE
+
+    //this.props.traerVideos()
+  //}
 
   componentDidUpdate() {
   this.props.handleVideoSelect();
@@ -61,14 +72,14 @@ class Youtube extends React.Component {
   */
 
   render() {
-    if (this.state.loading === true && !this.state.data) {
+    if (this.state.FETCH_VIDEOS === true && !this.state.data) {
       return <PageLoading />;
     }
 
     if (this.state.error) {
       return <PageError error={this.state.error} />;
     }
-
+    console.log(this.props);
     return (
       <React.Fragment>
         <div className="Badges">
@@ -103,4 +114,9 @@ class Youtube extends React.Component {
   }
 }
 
-export default Youtube;
+const mapStateToProps = (reducers) => {
+  return reducers.fetchUser;
+};
+
+
+export default connect(mapStateToProps, {videosActions} )(Youtube);

@@ -2,10 +2,12 @@ import React, { Component }  from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import SignIn from './Login';
 import Layout from './Layout';
+
 import VideoItem from "./VideoItem";
 import VideoDetail from "./VideoDetail";
 import VideoList from "./VideoList";
 import requireAuth from "./auth/requireAuth";
+
 import NotFound from '../pages/NotFound';
 import { fetchUser } from "./actions";
 import Home from '../pages/Home';

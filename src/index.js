@@ -11,10 +11,13 @@ import reduxThunk from "redux-thunk";
 
 const container = document.getElementById('app');
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const store = createStore(
+    reducers, //todos los reducers
+    {}, // estado inicial
+    applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={ store }>
         <App />
     </Provider>,
     container);
